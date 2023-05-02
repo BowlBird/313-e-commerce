@@ -1,4 +1,5 @@
 # ECommerce
+A project for 313. It is a simulation of an e-commerce website using a firebase database.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
 
