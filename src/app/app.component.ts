@@ -20,9 +20,6 @@ export class AppComponent {
       shoppingCart: []
     }
 
-    this.userService.addUser(user)
-
-
   }
   title = 'e-commerce';
 }

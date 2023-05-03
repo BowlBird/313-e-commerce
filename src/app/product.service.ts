@@ -9,14 +9,19 @@ import { DatabaseService } from './database.service';
 })
 export class ProductService {
 
-  private dbPath = "https://e-commerce-2956f-default-rtdb.firebaseio.com/products"
+  private path = '/products'
 
   constructor(private databaseService: DatabaseService) {}
 
   /**
    * getter for Promise of products
    */
-  get products(): Promise<Product[]> {
-    return this.databaseService.get('/products') as Promise<any>
+  async products(): Promise<Product[]> {
+    let object = await this.databaseService.get(this.path)
+    let products: Product[] = [];
+    for(let key in object) {
+      products.push(object[key as keyof typeof object] as unknown as Product)
+    }
+    return products
   }
 }

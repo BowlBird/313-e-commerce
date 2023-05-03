@@ -22,21 +22,25 @@ export class UserService {
   /**
    * will return false if login failed
    */
-  // async login(username: string, password: string): Promise<boolean> {
-  //   let result = (await firstValueFrom(this.users)).filter(value =>
-  //     value.username === username
-  //   ).filter(value =>
-  //     value.password === password
-  //   )
+  async login(username: string, password: string): Promise<boolean> {
+    let result = await this.users().then(value =>
+      value.filter( user =>
+        username === user.username
+      ).filter( user =>
+        password === user.password
+      )
+    )
 
-  //   // early return if username and password didn't work
-  //   if (result.length != 1) {
-  //     return false
-  //   }
-  //   //login user
-  //   this._loggedUser = result[0];
-  //   return true;
-  // }
+    // early return if username and password didn't work
+    if (result.length != 1) {
+      return false
+    }
+
+    //login user
+    this._loggedUser = result[0];
+
+    return true;
+  }
 
   logout() {
     this._loggedUser = null
@@ -52,16 +56,24 @@ export class UserService {
     return this.databaseService.post(this.path, user.username, user)
   }
 
-  private get users() {
-    return this.databaseService.get(this.path)
+  /**
+   * gets all users
+   */
+  async users(): Promise<User[]> {
+    let object = await this.databaseService.get(this.path)
+    let users: User[] = [];
+    for(let key in object) {
+      users.push(object[key as keyof typeof object] as unknown as User)
+    }
+    return users
   }
 
-  // async updateLoggedUserShoppingCart(shoppingCart: Product[]): Promise<boolean> {
-  //   let user = this.loggedUser
-  //   if (user == null) return false
-  //   user.shoppingCart = shoppingCart
-  //   this.http.put(this.dbPath + '.json', user )
-  //   return true
-  // }
+  async updateLoggedUserShoppingCart(shoppingCart: Product[]): Promise<boolean> {
+    let user = this.loggedUser
+    if (user == null) return false
+    user.shoppingCart = shoppingCart
+    this.databaseService.put(this.path, user.username, user)
+    return true
+  }
 
 }
