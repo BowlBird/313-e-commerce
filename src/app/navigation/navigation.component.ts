@@ -9,6 +9,7 @@ import { User } from '../models/User';
 })
 export class NavigationComponent {
   constructor(private userService: UserService) {}
+  ngOnInit() {}
   get loggedUser() {
      return this.userService.loggedUser
   }

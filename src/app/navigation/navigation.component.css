@@ -3,6 +3,7 @@
 	align-items: center;
 	padding: 3rem;
 	padding-left: 1rem;
+	border-bottom: 1px solid black;
 }
 
 .links {

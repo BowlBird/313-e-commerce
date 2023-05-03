@@ -3,10 +3,10 @@
 		<span>CROW CLOTHES</span>
 
 	<div class="links">
-		<a class="link" href="">HOME</a>
-		<a class="link" *ngIf="loggedUser; else login" href="">Hi, {{loggedUser.username}}</a>
+		<a class="link" routerLink="">HOME</a>
+		<a class="link" *ngIf="loggedUser; else login" routerLink="">Hi, {{loggedUser.username}}</a>
 		<ng-template #login>
-			<a href="">LOGIN</a>
+			<a routerLink="/login">LOGIN</a>
 		</ng-template>
 	</div>
 </mat-toolbar>
