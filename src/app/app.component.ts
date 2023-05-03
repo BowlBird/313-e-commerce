@@ -12,7 +12,6 @@ import { OrderService } from './order.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private userService: UserService, private productService: ProductService, private orderService: OrderService) {}
-  ngOnInit() {}
+  constructor() {}
   title = 'e-commerce';
 }
