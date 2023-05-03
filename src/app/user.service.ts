@@ -41,7 +41,9 @@ export class UserService {
 
     return true;
   }
-
+  /**
+   * logs user out
+   */
   logout() {
     this._loggedUser = null
   }
@@ -68,6 +70,11 @@ export class UserService {
     return users
   }
 
+  /**
+   * 
+   * @param shoppingCart 
+   * @returns whether function worked
+   */
   async updateLoggedUserShoppingCart(shoppingCart: Product[]): Promise<boolean> {
     let user = this.loggedUser
     if (user == null) return false

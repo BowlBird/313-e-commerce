@@ -4,6 +4,7 @@ import { Product, Rating } from './models/Product';
 import { User } from './models/User';
 import { map } from 'rxjs';
 import { ProductService } from './product.service';
+import { OrderService } from './order.service';
 
 @Component({
   selector: 'app-root',
@@ -11,15 +12,7 @@ import { ProductService } from './product.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private userService: UserService, private productService: ProductService) {}
-  ngOnInit() {
-
-    let user: User = {
-      username: 'Carson5',
-      password: 'CM123',
-      shoppingCart: []
-    }
-
-  }
+  constructor(private userService: UserService, private productService: ProductService, private orderService: OrderService) {}
+  ngOnInit() {}
   title = 'e-commerce';
 }
