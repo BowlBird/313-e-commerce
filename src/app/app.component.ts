@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ProductService } from './product.service';
+import { UserService } from './user.service';
+import { User } from './models/User';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,7 @@ import { ProductService } from './product.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  constructor(private userService: UserService) {}
+    
   title = 'e-commerce';
 }

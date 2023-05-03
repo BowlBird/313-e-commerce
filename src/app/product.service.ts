@@ -12,7 +12,18 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
+  /**
+   * getter for observable products
+   */
   get products(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.dbPath + '.json')
+    return this.http.get<Product[]>(this.dbPath + '.json').pipe(
+      map(data => {
+        let products: Product[] = [];
+        for(let product of data) {
+          products.push(product)
+        }
+        return products;
+        }) 
+    )
   }
 }
