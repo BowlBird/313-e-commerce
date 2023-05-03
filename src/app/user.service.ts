@@ -1,71 +1,67 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from './models/User';
-import { lastValueFrom, firstValueFrom, map, Observable } from 'rxjs';
+import { lastValueFrom, firstValueFrom, map, Observable, of } from 'rxjs';
+import { Product } from './models/Product';
+import { DatabaseService } from './database.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  private path = '/users'
+  private _loggedUser: User | null = null;
 
-  private dbPath = "https://e-commerce-2956f-default-rtdb.firebaseio.com/users"
-
-  constructor(private http: HttpClient) {}
+  constructor(private databaseService: DatabaseService) {}
   
-  get users() {
-    return this.http.get<User[]>(this.dbPath + '.json').pipe(
-      map(data => {
-        let users: User[] = [];
-
-        for(let key in data) {
-          users.push(data[key])
-        }
-        return users;
-        })
-    )
+  // === LOGIN LOGIC ===
+  get loggedUser() {
+    return this._loggedUser
   }
 
   /**
-   * if user id = 0, id will be auto generated.
+   * will return false if login failed
+   */
+  // async login(username: string, password: string): Promise<boolean> {
+  //   let result = (await firstValueFrom(this.users)).filter(value =>
+  //     value.username === username
+  //   ).filter(value =>
+  //     value.password === password
+  //   )
+
+  //   // early return if username and password didn't work
+  //   if (result.length != 1) {
+  //     return false
+  //   }
+  //   //login user
+  //   this._loggedUser = result[0];
+  //   return true;
+  // }
+
+  logout() {
+    this._loggedUser = null
+  }
+
+  // === DATABASE LOGIC ===
+
+  /**
    * will return false if no add happened.
    * @param user 
    */
   async addUser(user: User): Promise<boolean> {
-
-    //generate id
-    if(user.id == 0) {
-      user.id = await this.generateId()
-    }
-
-    
-    let users = await firstValueFrom(this.users)
-    let usersIds = users.map(function (value) {return value.id})
-    let usersUsernames = users.map(function (value) {return value.username})
-    
-    //test if it should add or not
-    if (user.id in usersIds || user.username in usersUsernames) {
-      return false
-    }
-
-    this.http.post(this.dbPath + '.json', user).subscribe();
-
-    return true
+    return this.databaseService.post(this.path, user.username, user)
   }
 
-  /**
-   * generates id not currently being used.
-   * @returns id
-   */
-  private async generateId(): Promise<number> {
-    let currentIds = (await firstValueFrom(this.users)).map(function (value) {return value.id});
-    
-    let id = 1;
-    while(true) {
-      if (!currentIds.includes(id)) {
-        return id
-      }
-      id++
-    }
+  private get users() {
+    return this.databaseService.get(this.path)
   }
+
+  // async updateLoggedUserShoppingCart(shoppingCart: Product[]): Promise<boolean> {
+  //   let user = this.loggedUser
+  //   if (user == null) return false
+  //   user.shoppingCart = shoppingCart
+  //   this.http.put(this.dbPath + '.json', user )
+  //   return true
+  // }
 
 }
