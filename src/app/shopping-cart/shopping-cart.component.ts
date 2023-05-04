@@ -3,6 +3,7 @@ import { UserService } from '../user.service';
 import { OrderService } from '../order.service';
 import { Order } from '../models/Order';
 import { Router } from '@angular/router';
+import { Product } from '../models/Product';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -43,8 +44,12 @@ export class ShoppingCartComponent {
   return (this.loggedUser.shoppingCart == null) ? 0 : this.userService.loggedUser?.shoppingCart.reduce((sum, current) => sum + current.price, 0)!
   }
 
+  priceFunction(products: Product[]) {
+    return products.reduce((sum, current) => sum + current.price, 0)
+  }
+
   placeOrder() {
-    this.orderService.addOrder(this.loggedUser.username, this.loggedUser.shoppingCart) 
+    this.orderService.addOrder(this.loggedUser.username, this.loggedUser.shoppingCart)
     this.router.navigate([''])
   }
 
