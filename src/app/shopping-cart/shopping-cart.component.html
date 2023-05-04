@@ -1,0 +1,40 @@
+<mat-card class="outer">
+	<mat-card-header>
+		<mat-card-title>
+			Shopping Cart
+		</mat-card-title>
+	</mat-card-header>
+	<mat-card-content>
+		<mat-list>
+			<mat-list-item *ngFor="let product of loggedUser.shoppingCart">
+				<img matListItemIcon src={{product.image}} alt="product image" width="50rem">
+				<p matListItemTitle >{{product.title}}</p>
+				<p matListItemLine>{{product.price | currency}}</p>	
+				<button mat-button matListItemMeta class="removeBtn" (click)="removeItem(product.id)">Remove</button>		
+			</mat-list-item>
+		</mat-list>
+	</mat-card-content>
+	<mat-card-actions>
+		<mat-card-subtitle>
+			Total: {{price | currency}}
+		</mat-card-subtitle>
+		<a *ngIf="this.loggedUser.shoppingCart else noShoppingCart" mat-button (click)="placeOrder(); clearShoppingCart()">Place Order</a>
+		<ng-template #noShoppingCart mat-button>Add Items to Place Order.</ng-template>
+	</mat-card-actions>
+</mat-card>
+
+<mat-card class="outer">
+	<mat-card-header>
+		<mat-card-title>
+			Orders
+		</mat-card-title>
+	</mat-card-header>
+	<mat-card-content>
+		<mat-list>
+			<mat-list-item *ngFor="let order of orders">
+				<p matListItemTitle>{{order.date.toDateString()}}</p>
+				
+			</mat-list-item>
+		</mat-list>
+	</mat-card-content>
+</mat-card>

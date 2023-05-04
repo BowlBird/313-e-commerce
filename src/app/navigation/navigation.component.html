@@ -4,7 +4,7 @@
 
 	<div class="links">
 		<a class="link" routerLink="">HOME</a>
-		<a class="link" *ngIf="loggedUser; else login" routerLink="">Hi, {{loggedUser.username}} 🛒:{{loggedUser.shoppingCart.length}}</a>
+		<a class="link" *ngIf="loggedUser; else login" routerLink="/shopping-cart">Hi, {{loggedUser.username}} 🛒:{{shoppingCart.length}} - {{price | currency}}</a>
 		<ng-template #login>
 			<a routerLink="/login">LOGIN</a>
 		</ng-template>

@@ -17,7 +17,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input'; 
 import {MatButtonModule} from '@angular/material/button'; 
 import {MatListModule} from '@angular/material/list';
-import { ProductDetailComponent } from './product-detail/product-detail.component'; 
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component'; 
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     ProductsComponent,
     NavigationComponent,
     LoginComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,

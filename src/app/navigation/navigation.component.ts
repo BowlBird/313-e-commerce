@@ -12,4 +12,12 @@ export class NavigationComponent {
   get loggedUser() {
      return this.userService.loggedUser
   }
+
+  get shoppingCart() {
+    return (this.loggedUser?.shoppingCart == null) ? [] : this.loggedUser.shoppingCart
+  }
+
+  get price() {
+    return (this.loggedUser?.shoppingCart == null) ? 0 : this.userService.loggedUser?.shoppingCart.reduce((sum, current) => sum + current.price, 0)!
+  }
 }
