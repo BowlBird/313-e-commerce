@@ -1,0 +1,10 @@
+mat-card {
+	margin: 1rem;
+}
+img {
+	width: 65%;
+}
+.price {
+	font-weight: bold;
+	font-size: 1rem;
+}
