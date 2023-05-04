@@ -1,8 +1,10 @@
 mat-card {
 	margin: 1rem;
 }
+
 img {
-	width: 65%;
+
+	max-height: 20rem;
 }
 .price {
 	font-weight: bold;

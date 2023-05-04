@@ -1,7 +1,9 @@
 <mat-toolbar class="navbar">
-		<img #crowImage [src]="'../../assets/images/crow.png'" alt="crow" width="80rem">
+	<mat-toolbar-row>
+		<img #crowImage [src]="'https://static.thenounproject.com/png/25964-200.png'" alt="crow" width="80rem">
 		<span>CROW COMMODITIES</span>
-
+	</mat-toolbar-row>
+	<mat-toolbar-row>
 	<div class="links">
 		<a class="link" routerLink="">HOME</a>
 		<a class="link" *ngIf="loggedUser; else login" routerLink="/shopping-cart">Hi, {{loggedUser.username}} 🛒:{{shoppingCart.length}} - {{price | currency}}</a>
@@ -9,4 +11,5 @@
 			<a routerLink="/login">LOGIN</a>
 		</ng-template>
 	</div>
+</mat-toolbar-row>
 </mat-toolbar>

@@ -1,5 +1,6 @@
 mat-card-title {
 	text-align: center;
+	font-size: .8rem;
 	border-bottom: 1px solid black;
 }
 
