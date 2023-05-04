@@ -32,7 +32,7 @@
 	<mat-card-content>
 		<mat-list>
 			<mat-list-item *ngFor="let order of orders">
-				<p matListItemTitle>{{order.date.toDateString()}} - {{priceFunction(order.shoppingCart) | currency}}</p>
+				<p matListItemTitle>{{order.date.toLocaleTimeString()}} {{order.date.toDateString()}} - {{priceFunction(order.shoppingCart) | currency}}</p>
 				<mat-list>
 					<mat-list-item *ngFor="let product of order.shoppingCart">
 						<img matListItemIcon src={{product.image}} alt="product image" width="50rem">
