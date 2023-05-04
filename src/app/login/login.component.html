@@ -16,7 +16,11 @@
 			</mat-form-field>
 		</div>
 
-		<button mat-stroked-button>Create Account</button>
+		<button mat-stroked-button (click)="createAccount()">Create Account</button>
 		<button mat-stroked-button (click)="login()">Login</button>
+		
+	</mat-card-content>
+	<mat-card-content>
+		<p class="error">{{errorMessage}}</p>
 	</mat-card-content>
 </mat-card>
