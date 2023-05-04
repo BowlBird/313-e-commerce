@@ -1,0 +1,29 @@
+<mat-grid-list cols = 2 rowHeight="30rem">
+	<mat-grid-tile>
+		<img src={{product.image}} alt="product image">
+	</mat-grid-tile>
+	<mat-grid-tile>
+		<mat-card>
+		<mat-card-header>
+			<mat-card-title>
+				{{product.title}}
+			</mat-card-title>
+			<mat-card-subtitle>
+				{{product.category}}
+			</mat-card-subtitle>
+			<mat-card-subtitle>
+				{{product.rating.rate}}★ from {{product.rating.count}} customers
+			</mat-card-subtitle>
+		</mat-card-header>
+		<mat-card-content>
+			<p class="price">${{product.price}}</p>
+			<p>{{product.description}}</p>
+			<p class="error">{{errorMessage}}</p>
+		</mat-card-content>
+		<mat-card-actions>
+			<a (click)="addToCart(product)" mat-button >Add to Cart</a>
+			<a routerLink="" mat-button>Go Back</a>
+		</mat-card-actions>
+	</mat-card>
+</mat-grid-tile>
+</mat-grid-list>

@@ -23,12 +23,13 @@ export class UserService {
    * will return false if login failed
    */
   async login(username: string, password: string): Promise<boolean> {
-    let result = await this.users().then(value =>
-      value.filter( user =>
+    let result = await this.users().then(value => {
+      return value.filter( user =>
         username === user.username
       ).filter( user =>
         password === user.password
       )
+    }
     )
 
     // early return if username and password didn't work

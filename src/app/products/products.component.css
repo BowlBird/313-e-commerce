@@ -1,0 +1,44 @@
+mat-card-title {
+	text-align: center;
+	font-size: .8rem;
+	border-bottom: 1px solid black;
+}
+
+
+.search {
+	display: flex;
+	justify-content: center;
+}
+
+.outer {
+	margin: 1rem;
+}
+
+mat-form-field {
+	width: 80%;
+	margin: 1rem;
+}
+
+mat-card {
+	width: 90%;
+	display: flex;
+	align-items: center;
+}
+
+img {
+	max-height: 20vh;
+	max-width: 100%;
+}
+
+mat-card-content {
+	height: 20vh;
+}
+
+mat-card-header {
+	height: 20vh;
+}
+
+.error {
+	text-align: center;
+	color: red;
+}

@@ -1,0 +1,16 @@
+mat-card {
+	margin: 1rem;
+}
+
+img {
+
+	max-height: 20rem;
+}
+.price {
+	font-weight: bold;
+	font-size: 1rem;
+}
+
+.error {
+	color: red;
+}

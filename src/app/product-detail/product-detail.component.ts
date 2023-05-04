@@ -1,33 +1,26 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { DEFAULT_PRODUCT, Product } from '../models/Product';
 import { ProductService } from '../product.service';
-import { Product } from '../models/Product';
 import { UserService } from '../user.service';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  selector: 'app-product-detail',
+  templateUrl: './product-detail.component.html',
+  styleUrls: ['./product-detail.component.css']
 })
-export class ProductsComponent {
-  constructor(private productService: ProductService, private userService: UserService) {}
+export class ProductDetailComponent {
+  constructor(private route: ActivatedRoute, private productService: ProductService, private userService: UserService) {}
   ngOnInit() {
-    this.productService.products().then(
-      value => this.products = value
-    )
-  }
-  products: Product[] = []
-  errorMessage: string =''
-  search: string = ''
-
-  updateProducts() {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
     this.productService.products().then(
       value => {
-        this.products = value.filter(
-          product => product.title.includes(this.search)
-        )
+        this.product = value[id]
       }
     )
   }
+  errorMessage = ''
+  product: Product = DEFAULT_PRODUCT
 
   addToCart(product: Product) {
     console.log(product);

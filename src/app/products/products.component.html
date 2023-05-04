@@ -1,1 +1,28 @@
-<p>products works!</p>
+<div class="search">
+	<mat-form-field appearance="outline">
+		<mat-label>Search</mat-label>
+		<input matInput (input)="updateProducts()" [(ngModel)]="search">
+	</mat-form-field>
+	
+</div>
+<div class="error">
+	<span>{{errorMessage}}</span>
+</div>
+<div class="outer">
+	<mat-grid-list cols = 3 rowHeight="50vh">
+		<mat-grid-tile *ngFor="let product of products">
+			<mat-card>
+				<mat-card-header>
+					<mat-card-title>{{product.title}}</mat-card-title>
+				</mat-card-header>
+				<mat-card-content>
+					<img mat-card-image src={{product.image}} alt="product Picture">
+				</mat-card-content>
+				<mat-card-actions>
+					<a routerLink="/product/{{product.id - 1}}" mat-button>Show More</a>
+					<a (click)="addToCart(product)" mat-button>Add to Cart</a>
+				</mat-card-actions>
+			</mat-card>
+		</mat-grid-tile>
+	</mat-grid-list>
+</div>

@@ -1,0 +1,16 @@
+mat-card {
+	display: flex;
+	width: 60%;
+	margin: auto;
+	margin-top: 1rem;
+	justify-content: center;
+	align-items: center;
+}
+
+.error {
+	color: red;
+}
+
+.success {
+	color: green;
+}

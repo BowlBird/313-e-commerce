@@ -1,0 +1,15 @@
+.outer {
+	margin: 1rem;
+}
+
+.removeBtn {
+	background-color: white;
+	color: white;
+	height: 100%;
+	padding-bottom: 1rem;
+	justify-content: center;
+}
+
+mat-card-subtitle {
+	padding: 0rem 1rem 0rem 1rem;
+}
