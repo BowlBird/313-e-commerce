@@ -3,6 +3,10 @@
 		<mat-label>Search</mat-label>
 		<input matInput (input)="updateProducts()" [(ngModel)]="search">
 	</mat-form-field>
+	
+</div>
+<div class="error">
+	<span>{{errorMessage}}</span>
 </div>
 <div class="outer">
 	<mat-grid-list cols = 3 rowHeight="50vh">
@@ -16,6 +20,7 @@
 				</mat-card-content>
 				<mat-card-actions>
 					<a routerLink="/product/{{product.id - 1}}" mat-button>Show More</a>
+					<a (click)="addToCart(product)" mat-button>Add to Cart</a>
 				</mat-card-actions>
 			</mat-card>
 		</mat-grid-tile>

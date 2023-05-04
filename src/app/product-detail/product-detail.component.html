@@ -18,7 +18,12 @@
 		<mat-card-content>
 			<p class="price">${{product.price}}</p>
 			<p>{{product.description}}</p>
+			<p class="error">{{errorMessage}}</p>
 		</mat-card-content>
+		<mat-card-actions>
+			<a (click)="addToCart(product)" mat-button >Add to Cart</a>
+			<a routerLink="" mat-button>Go Back</a>
+		</mat-card-actions>
 	</mat-card>
 </mat-grid-tile>
 </mat-grid-list>

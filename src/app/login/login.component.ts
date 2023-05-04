@@ -15,6 +15,7 @@ export class LoginComponent {
   password: string = ""
 
   errorMessage: string = ""
+  successMessage: string = ""
 
   login() {
     this.userService.login(this.username, this.password).then(
@@ -36,12 +37,12 @@ export class LoginComponent {
     }
     this.userService.addUser(user).then(
       result => {
-        if(result) {
-          this.login()
-        }
-        else {
+        if(!result) {
           this.errorMessage = 'failed to create account. Username taken.'
+        }else {
+          this.successMessage = 'Successfully created account! Please log in.'
         }
+
       }
     )
   }

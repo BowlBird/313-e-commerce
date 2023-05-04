@@ -10,3 +10,7 @@ mat-card {
 .error {
 	color: red;
 }
+
+.success {
+	color: green;
+}

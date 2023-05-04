@@ -64,3 +64,8 @@ mat-card-content {
 mat-card-header {
 	height: 20vh;
 }
+
+.error {
+	text-align: center;
+	color: red;
+}
